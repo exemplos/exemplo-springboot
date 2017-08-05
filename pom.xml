@@ -159,6 +159,13 @@
 
       </plugins>
    </build>
+   
+   <repositories>
+   	<repository>
+   		<id>convergencia</id>
+   		<url>http://ci.convergencia.io/nexus/content/groups/public/</url>
+   	</repository>
+   </repositories>
 
 
 </project>
