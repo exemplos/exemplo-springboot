@@ -1,6 +1,7 @@
 package com.franciscocalaca.exemplo.springboot;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -22,24 +23,18 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class Application {
 
+	@Autowired
+	private DataSource dataSource;
+	
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Application.class, args);
 	}
 
-   @Bean
-   public DataSource dataSource() {
-       DriverManagerDataSource dataSource = new DriverManagerDataSource();
-       dataSource.setDriverClassName("org.postgresql.Driver");
-       dataSource.setUrl("jdbc:postgresql://localhost:5432/dwpm-senai");
-       dataSource.setUsername("postgres");
-       dataSource.setPassword("123456");
-       return dataSource;
-   }
    
    @Bean
    public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
      LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-     em.setDataSource(dataSource());
+     em.setDataSource(dataSource);
      em.setJpaVendorAdapter(jpaVendorAdapter());
      em.setPackagesToScan("com.franciscocalaca.exemplo.springboot");
      return em;
