@@ -1,4 +1,4 @@
-package com.franciscocalaca.exemplo.springboot;
+package com.franciscocalaca.exemplo.springboot.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
