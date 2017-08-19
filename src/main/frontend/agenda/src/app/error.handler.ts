@@ -1,0 +1,22 @@
+
+
+
+import { Observable } from "rxjs/Observable";
+
+export class ErrorHandler {
+
+    static handleError(error:Response | any){
+        console.log(error.toString())
+        let errorMessage:string
+        
+        if(error instanceof Response){
+            errorMessage = `Erro ${error.status} ao acessar a url ${error.url} - ${error.statusText}`
+        }else{
+            errorMessage = error.toString()
+        }
+        
+        console.log(errorMessage);
+        return Observable.throw(errorMessage)
+    }
+
+}
